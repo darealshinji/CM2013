@@ -13,8 +13,8 @@ Note that in xcode4 beta builds /Developer would be replaced with /Xcode4
 
 export CC=/path/to/gcc
 export CXX=/path/to/g++
-export CFLAGS=-fvisiblity=hidden
-export CXXFLAGS=-fvisiblity=hidden
+export CFLAGS=-fvisibility=hidden
+export CXXFLAGS=-fvisibility=hidden
 export LDFLAGS="-static-libgcc" 
 ./configure --enable-shared=no
 
@@ -22,8 +22,8 @@ export LDFLAGS="-static-libgcc"
 
 export CC=/path/to/gcc
 export CXX=/path/to/g++
-export CFLAGS=-fvisiblity=hidden
-export CXXFLAGS=-fvisiblity=hidden
+export CFLAGS=-fvisibility=hidden
+export CXXFLAGS=-fvisibility=hidden
 export LDFLAGS=-static-libgcc
 ./configure --with-pic --enable-shared=no
 
