@@ -27,7 +27,12 @@ ipch
 *.DS_Store
 *.xcodeproj/
 obj*/
+/sp/src/lib/public/linux32/mathlib.a
+/sp/src/lib/public/linux32/raytrace.a
+/sp/src/lib/public/linux32/tier1.a
+/sp/src/lib/public/linux32/vgui_controls.a
 everything.mak
+/sp/src/Makefile
 *_linux32*
 *_osx32*
 

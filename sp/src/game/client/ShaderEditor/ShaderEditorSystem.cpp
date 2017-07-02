@@ -77,6 +77,8 @@ bool ShaderEditorHandler::Init()
 	SEDIT_SKYMASK_MODE iEnableSkymask = SKYMASK_QUARTER;
 	// FAKEFACTORY SHADER
 
+#ifdef _WIN32
+
 #ifdef SHADEREDITOR_FORCE_ENABLED
 	bCreateEditor = true;
 	iEnableSkymask = SKYMASK_QUARTER;
@@ -113,6 +115,11 @@ bool ShaderEditorHandler::Init()
 	{
 		Warning( "Cannot load shadereditor.dll from %s!\n", modulePath );
 	}
+
+#else // !_WIN32
+  shaderEdit = NULL;
+#endif // _WIN32
+
 
 	m_bReady = shaderEdit != NULL;
 

@@ -3267,9 +3267,7 @@ void DoImageSpaceMotionBlur( const CViewSetup &view, int x, int y, int w, int h 
 
 	// FAKEFACTORY ESTRANGED
 	//if ( ( !mat_motion_blur_enabled.GetInt() ) || ( g_pMaterialSystemHardwareConfig->GetDXSupportLevel() < 90 ) )
-#ifdef _WIN32
 	if ( ( !mat_motion_blur_enabled.GetInt() ) || !CEstrangedSystemCaps::HasCaps( CAPS_SHADER_POSTPROCESS ) )
-#endif
 
 
 		// FAKEFACTORY ESTRANGED

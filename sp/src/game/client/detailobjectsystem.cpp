@@ -26,14 +26,6 @@
 #include <algorithm>
 #include "tier0/valve_minmax_on.h"
 
-// enabling the definition in tier0/valve_minmax_on.h for
-// the whole project will somehow fail to build on Linux
-#if defined(__linux) || defined(__linux__) || defined(__gnu_linux__) || defined(linux)
-#define VALVE_MIN(a,b)  (((a) < (b)) ? (a) : (b))
-#else
-#define VALVE_MIN(a,b)  min(a,b)
-#endif
-
 // FAKEFACTORY - DETAILS
 //war:
 //Tony; add the SDK into this as well by default.
@@ -56,6 +48,14 @@
 #include "tier0/memdbgon.h"
 
 #define DETAIL_SPRITE_MATERIAL		"detail/detailsprites"
+
+// enabling the definition in tier0/valve_minmax_on.h for
+// the whole project will somehow fail to build on Linux
+#ifdef __linux__
+#define VALVE_MIN(a,b)  (((a) < (b)) ? (a) : (b))
+#else
+#define VALVE_MIN(a,b)  min(a,b)
+#endif
 
 //-----------------------------------------------------------------------------
 // forward declarations

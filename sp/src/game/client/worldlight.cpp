@@ -186,9 +186,7 @@ void CWorldLights::LevelInitPreEntity()
 
 
 		{
-			Warning(pszMapName);
-			Warning(" - Performance critical map. Skipping realtime triggered worldlight shadows\n");
-			//Warning(pszMapName);
+			Warning("%s - Performance critical map. Skipping realtime triggered worldlight shadows\n", pszMapName);
 			return;
 		}
 

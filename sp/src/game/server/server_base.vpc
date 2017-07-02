@@ -665,6 +665,12 @@ $Project
 		$File	"$SRCDIR\public\haptics\haptic_msgs.cpp"
 		$File	"$SRCDIR\public\haptics\haptic_utils.cpp"	[$WIN32]
 
+		// FAKEFACTORY
+		$File	"$SRCDIR\game\shared\estrangedplayerinformation.cpp"
+		$File	"$SRCDIR\game\shared\estrangedplayerinformation.h"
+		$File	"estranged_interactive_screen.cpp"
+		$File	"estranged_interactive_screen.h"
+
 		// Not using precompiled header cbase.h
 
 		$File	"$SRCDIR\public\bone_setup.cpp"					\
