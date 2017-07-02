@@ -1,0 +1,18 @@
+#!/bin/bash
+
+pushd `dirname $0`
+
+if [ -f everything.mak ]; then
+  make -f everything.mak clean
+  rm -f everything.mak
+fi
+
+find ../* -type f \( -name *_linux32* -o -name *_osx32* \) -delete
+find ../* -type d \( -name *_linux32* -o -name *_osx32* \) -exec rmdir '{}' 2>/dev/null \;
+
+rm -f lib/public/linux32/mathlib.a \
+  lib/public/linux32/raytrace.a \
+  lib/public/linux32/tier1.a \
+  lib/public/linux32/vgui_controls.a
+
+popd

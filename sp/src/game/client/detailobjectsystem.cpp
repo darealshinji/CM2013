@@ -26,6 +26,14 @@
 #include <algorithm>
 #include "tier0/valve_minmax_on.h"
 
+// enabling the definition in tier0/valve_minmax_on.h for
+// the whole project will somehow fail to build on Linux
+#if defined(__linux) || defined(__linux__) || defined(__gnu_linux__) || defined(linux)
+#define VALVE_MIN(a,b)  (((a) < (b)) ? (a) : (b))
+#else
+#define VALVE_MIN(a,b)  min(a,b)
+#endif
+
 // FAKEFACTORY - DETAILS
 //war:
 //Tony; add the SDK into this as well by default.
@@ -1573,8 +1581,8 @@ void CDetailObjectSystem::LevelInitPostEntity()
 	}
 	if ( GetDetailController() )
 	{
-		cl_detailfade.SetValue( min( m_flDefaultFadeStart, GetDetailController()->m_flFadeStartDist ) );
-		cl_detaildist.SetValue( min( m_flDefaultFadeEnd, GetDetailController()->m_flFadeEndDist ) );
+		cl_detailfade.SetValue( VALVE_MIN( m_flDefaultFadeStart, GetDetailController()->m_flFadeStartDist ) );
+		cl_detaildist.SetValue( VALVE_MIN( m_flDefaultFadeEnd, GetDetailController()->m_flFadeEndDist ) );
 	}
 	else
 	{

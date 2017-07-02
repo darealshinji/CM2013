@@ -1482,7 +1482,9 @@ void CViewRender::ViewDrawScene( bool bDrew3dSkybox, SkyboxVisibility_t nSkyboxV
 	render->GetVisibleFogVolume( view.origin, &fogVolumeInfo );	
 	WaterRenderInfo_t info;	
 	DetermineWaterRenderInfo( fogVolumeInfo, info );	
+#ifdef _WIN32
 	g_ShaderEditorSystem->CustomViewRender( &g_CurrentViewID, fogVolumeInfo, info );
+#endif
 	// FAKEFACTORY SHADER
 
 	// Disable fog for the rest of the stuff
@@ -2112,7 +2114,9 @@ void CViewRender::RenderView( const CViewSetup &view, int nClearFlags, int whatT
 		{
 			AddViewToScene( pSkyView );
 			// FAKEFACTORY SHADER
+#ifdef _WIN32
 			g_ShaderEditorSystem->UpdateSkymask(false);
+#endif
 			// FAKEFACTORY SHADER
 		}
 		SafeRelease( pSkyView );
@@ -2193,7 +2197,9 @@ void CViewRender::RenderView( const CViewSetup &view, int nClearFlags, int whatT
 		DrawViewModels( view, whatToDraw & RENDERVIEW_DRAWVIEWMODEL );
 
 			// FAKEFACTORY SHADER
+#ifdef _WIN32
 		g_ShaderEditorSystem->UpdateSkymask( bDrew3dSkybox );
+#endif
 		// FAKEFACTORY SHADER
 
 		DrawUnderwaterOverlay();
@@ -2235,7 +2241,9 @@ void CViewRender::RenderView( const CViewSetup &view, int nClearFlags, int whatT
 
 
 		// FAKEFACTORY SHADER
+#ifdef _WIN32
 		g_ShaderEditorSystem->CustomPostRender();
+#endif
 		// FAKEFACTORY SHADER
 
 		// And here are the screen-space effects
@@ -5589,11 +5597,13 @@ void CBaseWorldView::DrawSetup( float waterHeight, int nSetupFlags, float waterZ
 
 	// ConVarRef ae_dof("ae_dof");
 
+#ifdef _WIN32
 	bool enableEstrangedDepthPass = ae_ssao.GetBool()  && (CEstrangedSystemCaps::HasCaps(CAPS_ESTRANGED_DEPTHPASS) && CEstrangedSystemCaps::HasCaps(CAPS_SHADER_POSTPROCESS));
 	if(savedViewID == VIEW_MAIN && enableEstrangedDepthPass)
 	{
 		SSAO_DepthPass();
 	}
+#endif
 
 
 
@@ -5686,10 +5696,12 @@ void CBaseWorldView::DrawExecute( float waterHeight, view_id_t viewID, float wat
 #endif
 		
 		// FAKEFACTORY ESTRANGED
+#ifdef _WIN32
 		if (ae_ssao.GetBool() && (CEstrangedSystemCaps::HasCaps(CAPS_ESTRANGED_DEPTHPASS) && CEstrangedSystemCaps::HasCaps(CAPS_SHADER_POSTPROCESS)))
 		{
 			SSAO_DrawResults();
 		}
+#endif
 		// FAKEFACTORY ESTRANGED
 		
 		
@@ -5712,10 +5724,12 @@ void CBaseWorldView::DrawExecute( float waterHeight, view_id_t viewID, float wat
 #endif
 		
 // FAKEFACTORY ESTRANGED		
+#ifdef _WIN32
 				if (ae_ssao.GetBool() && (CEstrangedSystemCaps::HasCaps(CAPS_ESTRANGED_DEPTHPASS) && CEstrangedSystemCaps::HasCaps(CAPS_SHADER_POSTPROCESS)))
 		{
 			SSAO_DrawResults();
 		}
+#endif
 // FAKEFACTORY ESTRANGED
 
 		
